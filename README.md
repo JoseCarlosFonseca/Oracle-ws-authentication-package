@@ -1,5 +1,5 @@
 # Oracle-ws-authentication-package
-Oracle Web Service Basic and HMAC Authentication Framework PL/SQL Package
+Oracle 12c Web Service Basic and HMAC Authentication Framework PL/SQL Package
 
 Oracle PL/SQL package for the BASIC AUTHENTICATION and HMAC AUTHENTICATION of web services
 There is also a test package that can be used to test the code
