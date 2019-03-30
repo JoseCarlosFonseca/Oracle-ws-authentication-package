@@ -12,8 +12,15 @@ create or replace PACKAGE BODY test_ws_authentication IS
 
     PROCEDURE hmac IS
         v_hmac_request ws_authentication.hmac_request_type;
+        v_key            users.key%TYPE;
+        v_secret         users.secret%TYPE;
     BEGIN
-        v_hmac_request := ws_authentication.hmac('sessions', 'active', '', 'NTYzNTk2RkQ0MTg1NDk5NjUyRDkwQUJFM0IwRENEODA0RDFEMUE4RDYxRTA4N0ZCNzA2RjUwNUIzOEM5NDM2Nw==');
+        SELECT key, secret
+        INTO v_key, v_secret
+        FROM users
+        WHERE id = 1;
+        
+        v_hmac_request := ws_authentication.hmac('sessions', 'active', '', v_secret);
         dbms_output.put_line(v_hmac_request.post_data);
         dbms_output.put_line(v_hmac_request.api_sign);
     END hmac;
